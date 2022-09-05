@@ -1,0 +1,17 @@
+total 60
+drwxr-xr-x 2 mwaura mwaura 4096 Sep  5 08:18 .
+drwxr-xr-x 6 mwaura mwaura 4096 Sep  5 06:44 ..
+-rwxr--r-- 1 mwaura mwaura   32 Sep  5 06:59 0-hello_world
+-rwxr--r-- 1 mwaura mwaura   28 Sep  5 06:53 1-confused_smiley
+-rwxr--r-- 1 mwaura mwaura   28 Sep  5 07:01 2-hellofile
+-rwxr--r-- 1 mwaura mwaura   39 Sep  5 07:08 3-twofiles
+-rwxr--r-- 1 mwaura mwaura   35 Sep  5 07:16 4-lastlines
+-rwxr--r-- 1 mwaura mwaura   35 Sep  5 07:18 5-firstlines
+-rwxr--r-- 1 mwaura mwaura   40 Sep  5 07:37 6-third_line
+-rwxr--r-- 1 mwaura mwaura  101 Sep  5 08:15 7-file
+-rwxr--r-- 1 mwaura mwaura   37 Sep  5 08:17 8-cwd_state
+-rw-r--r-- 1 mwaura mwaura   14 Sep  5 08:13 \*\\\'"Best School"\'\*$?*****:)
+-rw-r--r-- 1 mwaura mwaura   14 Sep  5 08:14 \*\\'"Holberton School"\'\\*$\?\*\*\*\*\*:)
+-rw-r--r-- 1 mwaura mwaura  110 Sep  5 07:39 iacta
+-rw-r--r-- 1 mwaura mwaura    0 Sep  5 08:18 ls_cwd_content
+-rw-r--r-- 1 mwaura mwaura   22 Sep  5 06:45 README.md
