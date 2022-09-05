@@ -1,0 +1,1 @@
+4print(flip_bytes("AAAA")) 
