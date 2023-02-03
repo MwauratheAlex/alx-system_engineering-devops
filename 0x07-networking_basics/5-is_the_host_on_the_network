@@ -8,8 +8,5 @@ i=0
 if [ $# -eq 0 ]; then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
-	while [ $i -le 4 ]; do
-		ping "$1"
-		i=$((i+1))
-	done
+	ping -c 5 "$1"
 fi
