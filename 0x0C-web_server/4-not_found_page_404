@@ -16,5 +16,5 @@ sed -i '/server_name _;/a'"$REDIRECT_301" /etc/nginx/sites-available/default
 sed -i '/server_name _;/a'"$LOCATION" /etc/nginx/sites-available/default
 sed -i '/server_name _;/a'"$SETUP_404" /etc/nginx/sites-available/default
 
-service nginx stop
-service nginx start
+service nginx restart
+service nginx reload
