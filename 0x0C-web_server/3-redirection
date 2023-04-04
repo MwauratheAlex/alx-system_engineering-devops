@@ -3,6 +3,11 @@
 
 ADD301_REDIRECT="\\\trewrite ^/redirect_me https://www.mbumwa.com permanent;"
 
+apt-get update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/index.html
+
 sed -i '/server_name _;/a'"$ADD301_REDIRECT" /etc/nginx/sites-available/default
 
 service nginx stop
