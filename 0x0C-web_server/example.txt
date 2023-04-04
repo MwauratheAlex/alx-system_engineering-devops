@@ -1,0 +1,9 @@
+server {
+    location / {
+        some test
+        some more test
+    }
+    location /test {
+        some other test
+    }
+}
