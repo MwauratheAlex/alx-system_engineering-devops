@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #Configure Nginx server so that /redirect_me is redirecting to another page.
 
-sed -i '/location \/ {/,/}/d; /server_name _;/a \
-location /redirect_me {\
-    return 301 https:\/\/www.mbumwa.com;\
+sed -i '/location \/ {/,/}/d; /server_name _;/a
+location /redirect_me {
+    return 301 https://www.mbumwa.com;
 }' /etc/nginx/sites-available/default
 
 service nginx stop
