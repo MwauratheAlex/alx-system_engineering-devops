@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+apt-get update
+apt-get install -y nginx
+ufw allow 'Nginx HTTP'
+
+echo "Hello World!" > /var/www/html/index.html
+touch /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+
+SETUP_404="\\\terror_page 404 /custom_404.html;"
+LOCATION="\\\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+
+sed -i '/server_name _;/a'"$LOCATION" /etc/nginx/sites-available/default
+sed -i '/server_name _;/a'"$SETUP_404" /etc/nginx/sites-available/default
+
+service nginx stop
+service nginx start

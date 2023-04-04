@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+SETUP_404="\\\terror_page 404 /custom_404.html"
+LOCATION="\\\tlocation = /custom_404.html {\n\t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}"
+
+sed -i '/server_name _;/a'"$LOCATION" default
+sed -i '/server_name _;/a'"$SETUP_404" default
+
