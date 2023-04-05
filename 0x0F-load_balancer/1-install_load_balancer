@@ -2,10 +2,11 @@
 #Installs and configures HAproxy on a Nginx server.
 
 #install HAProxy
-sudo apt-get update
-sudo apt-get install -y --no-install-recommends software-properties-common
-sudo add-apt-repository -y ppa:vbernat/haproxy-2.4
-sudo apt-get install -y haproxy
+apt-get update
+apt-get install -y --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.0
+apt-get update
+apt-get install -y haproxy=2.0.\*
 
 #enable the HAProxy init script
 echo "ENABLED=1" >> /etc/default/haproxy
@@ -30,8 +31,4 @@ echo "ENABLED=1" >> /etc/default/haproxy
 } >> /etc/haproxy/haproxy.cfg
 
 #start HAProxy
-if [ "$(pgrep -c haproxy)" -le 0 ]; then
-	service haproxy start
-else
-	service haproxy restart
-fi
+sudo service haproxy start
