@@ -2,7 +2,7 @@
 #Installs and configures HAproxy on a Nginx server.
 
 #install HAProxy
-apt-get update
+apt-get -y update
 apt-get install -y --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.0
 apt-get install -y haproxy=2.0.\*
