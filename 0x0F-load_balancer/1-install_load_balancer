@@ -35,4 +35,8 @@ sed -i 's/option\thttplog/option\ttcplog/' /etc/haproxy/haproxy.cfg
 } >> /etc/haproxy/haproxy.cfg
 
 #start HAProxy
-service haproxy restart
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+	service haproxy start
+else
+	service haproxy restart
+fi
