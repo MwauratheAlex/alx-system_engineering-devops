@@ -5,27 +5,24 @@
 apt-get -y update
 apt-get install -y --no-install-recommends software-properties-common
 add-apt-repository -y ppa:vbernat/haproxy-2.0
+apt-get -y update
 apt-get install -y haproxy=2.0.\*
 
 #enable the HAProxy init script
 echo "ENABLED=1" >> /etc/default/haproxy
 
 #HAProxy Configuration: Proxies
-#frontend
-{
-	echo ""
-	echo "frontend mwaura.tech"
-	echo -e "\tbind *:80"
-	echo -e "\tdefault_backend web-backend"
-} >> /etc/haproxy/haproxy.cfg
-#backend
-{
-	echo ""
-	echo -e "backend web-backend"
-	echo -e "\tbalance roundrobin"
-	echo -e "\tserver 120363-web-01 34.229.161.179:80 check"
-	echo -e "\tserver 120363-web-02 52.201.180.153:80 check"
-} >> /etc/haproxy/haproxy.cfg
+#frontend and backend
+echo '
+frontend lb-01-frontend
+	bind *:80
+	default_backend web-backend
+
+backend web-backend
+	balance roundrobin
+	server 120363-web-01 34.229.161.179:80
+	server 120363-web-02 52.201.180.153:80
+' >> /etc/haproxy/haproxy.cfg
 
 
 #start HAProxy
