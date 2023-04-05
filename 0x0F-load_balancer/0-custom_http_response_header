@@ -2,7 +2,7 @@
 # Adds a custom Nginx response header.
 
 HEADER="\\\t\tadd_header X-Served-By \"$HOSTNAME\";"
-sed -i "/^\tlocation \/ {/a""$HEADER" /etc/nginx/sites-available/default
+sed -i '/server_name _;/a'"$HEADER" /etc/nginx/sites-available/default
 
 service nginx restart
 service nginx reload
