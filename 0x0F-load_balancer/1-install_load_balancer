@@ -14,9 +14,8 @@ echo "ENABLED=1" >> /etc/default/haproxy
 #frontend
 {
 	echo ""
-	echo "frontend lb-01"
+	echo "frontend mwaura.tech"
 	echo -e "\tbind *:80"
-	echo -e "\tmode http"
 	echo -e "\tdefault_backend web-backend"
 } >> /etc/haproxy/haproxy.cfg
 #backend
