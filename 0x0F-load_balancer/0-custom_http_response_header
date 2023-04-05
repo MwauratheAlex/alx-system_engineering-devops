@@ -1,7 +1,26 @@
 #!/usr/bin/env bash
 # Adds a custom Nginx response header.
 
-HEADER="\\\t\tadd_header X-Served-By \"$HOSTNAME\";"
+#install nginx
+apt-get update
+apt-get install -y nginx
+ufw allow 'Nginx HTTP'
+
+#configure nginx
+echo "Hello World!" > /var/www/html/index.html
+touch /var/www/html/custom_404.html
+echo "Ceci n'est pas une page" > /var/www/html/custom_404.html
+
+REDIRECT_301="\\\trewrite ^/redirect_me https://www.mbumwa.com permanent;"
+SETUP_404="\\\terror_page 404 /custom_404.html;"
+LOCATION="\\\tlocation = /custom_404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
+
+sed -i '/server_name _;/a'"$REDIRECT_301" /etc/nginx/sites-available/default
+sed -i '/server_name _;/a'"$LOCATION" /etc/nginx/sites-available/default
+sed -i '/server_name _;/a'"$SETUP_404" /etc/nginx/sites-available/default
+
+# Add custom header
+HEADER="\\\tadd_header X-Served-By \"$HOSTNAME\";\n"
 sed -i '/server_name _;/a'"$HEADER" /etc/nginx/sites-available/default
 
 service nginx restart
