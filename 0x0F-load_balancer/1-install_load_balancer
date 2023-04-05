@@ -24,6 +24,5 @@ backend web-backend
 	server 120363-web-02 52.201.180.153:80
 ' >> /etc/haproxy/haproxy.cfg
 
-
 #start HAProxy
 service haproxy restart
