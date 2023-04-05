@@ -10,17 +10,13 @@ apt-get install -y haproxy=2.0.\*
 #enable the HAProxy init script
 echo "ENABLED=1" >> /etc/default/haproxy
 
-#HAProxy Configuration: Global
-#Selecting tcp as the mode configures HAProxy to perform layer 4 load balancing.
-sed -i 's/mode\thttp/mode\ttcp/' /etc/haproxy/haproxy.cfg
-sed -i 's/option\thttplog/option\ttcplog/' /etc/haproxy/haproxy.cfg
-
 #HAProxy Configuration: Proxies
 #frontend
 {
 	echo ""
 	echo "frontend lb-01"
 	echo -e "\tbind *:80"
+	echo -e "\tmode http"
 	echo -e "\tdefault_backend web-backend"
 } >> /etc/haproxy/haproxy.cfg
 
@@ -29,7 +25,6 @@ sed -i 's/option\thttplog/option\ttcplog/' /etc/haproxy/haproxy.cfg
 	echo ""
 	echo -e "backend web-backend"
 	echo -e "\tbalance roundrobin"
-	echo -e "\tmode tcp"
 	echo -e "\tserver web-01 34.229.161.179:80 check"
 	echo -e "\tserver web-02 52.201.180.153:80 check"
 } >> /etc/haproxy/haproxy.cfg
