@@ -1,1 +1,20 @@
 #!/usr/bin/env bash
+#display information about subdomains.
+
+function check_domain(){
+	FULL_DOMAIN=$2.$1
+	echo "The subdomain $2 is a" "$(dig "$FULL_DOMAIN" |
+		awk '/ANSWER SECTION/ {getline;print $4" record and points to "$5 }')"
+
+}
+
+if [ $# -eq 0 ]; then
+	echo "Usage: ./0-world_wide_web <domain> <subdomain>"
+elif [ $# -eq 1 ]; then
+	check_domain "$1" "www"
+	check_domain "$1" "lb-01"
+	check_domain "$1" "web-01"
+	check_domain "$1" "web-02"
+else
+	check_domain "$1" "$2"
+fi
