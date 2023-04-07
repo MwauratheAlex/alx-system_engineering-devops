@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 #display information about subdomains.
+#
+#Usage: ./0-world_wide_web <domain> <subdomain>
 
 function check_domain(){
 	FULL_DOMAIN=$2.$1
