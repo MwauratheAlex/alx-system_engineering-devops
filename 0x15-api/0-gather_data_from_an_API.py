@@ -17,7 +17,6 @@ if __name__ == "__main__":
     todos = requests.get(url).json()
     done_tasks = []
 
-
     for item in todos:
         if item.get("completed") is True:
             done_tasks.append(item.get("title"))
