@@ -4,9 +4,9 @@ Exports the data to USER_ID.json"""
 
 
 if __name__ == "__main__":
-    import sys
     import json
     import requests
+    import sys
 
     if len(sys.argv) == 1:
         print("Usage: ./0-gather_data_from_an_API.py <employeeID>")

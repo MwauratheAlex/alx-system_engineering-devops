@@ -4,9 +4,9 @@ about his/her TODO list progress to csv."""
 
 
 if __name__ == "__main__":
-    import sys
     import csv
     import requests
+    import sys
 
     if len(sys.argv) == 1:
         print("Usage: ./0-gather_data_from_an_API.py <employeeID>")
