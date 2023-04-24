@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Records all tasks that are owned by this employee.
-Exports the data to USER_ID.json"""
+""" using a REST API, for a given employee ID, returns information
+about his/her TODO list progress."""
 
 
 if __name__ == "__main__":
@@ -8,30 +8,24 @@ if __name__ == "__main__":
     import requests
     import sys
 
-    employeeID = sys.argv[1]
+    user_id = sys.argv[1]
+
     url = "https://jsonplaceholder.typicode.com/users/{}"
-    url = url.format(employeeID)
+    url = url.format(user_id)
 
-    employee_name = ""
-
-    with requests.get(url) as res:
-        data = res.json()
-        employee_name = data.get("username")
+    employee_name = requests.get(url).json().get("username")
 
     url = "https://jsonplaceholder.typicode.com/todos?userId={}"
-    url = url.format(employeeID)
-    employee_data = {employeeID: []}
+    url = url.format(user_id)
+    todos = requests.get(url).json()
+    employee_data = {user_id: []}
 
-    with requests.get(url) as res:
-        todos = res.json()
-
-        for item in todos:
-            employee_data[employeeID].append({
+    for item in todos:
+        employee_data[user_id].append({
                     "task": item.get("title"),
                     "completed": item.get("completed"),
                     "username": employee_name
                     })
 
-    filename = "{}.json".format(employeeID)
-    with open(filename, "w", encoding="utf-8") as file:
+    with open("{}.json".format(user_id), mode="w", encoding="utf-8") as file:
         file.write(json.dumps(employee_data))
