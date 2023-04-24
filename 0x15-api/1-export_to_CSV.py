@@ -8,17 +8,19 @@ if __name__ == "__main__":
     import requests
     import sys
 
+    user_id = sys.argv[1]
+
     url = "https://jsonplaceholder.typicode.com/users/{}"
-    url = url.format(sys.argv[1])
+    url = url.format(user_id)
 
     employee_name = requests.get(url).json().get("username")
 
     url = "https://jsonplaceholder.typicode.com/todos?userId={}"
-    url = url.format(sys.argv[1])
+    url = url.format(user_id)
     todos = requests.get(url).json()
     done_tasks = []
 
-    with open("USER_ID.csv", mode="w") as file:
+    with open("{}.csv".format(user_id), mode="w") as file:
         writer = csv.writer(
                         file,
                         delimiter=",",
@@ -26,7 +28,7 @@ if __name__ == "__main__":
                         quoting=csv.QUOTE_ALL)
         for item in todos:
             writer.writerow([
-                        sys.argv[1],
+                        user_id,
                         employee_name,
                         item.get("completed"),
                         item.get("title")
