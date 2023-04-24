@@ -17,8 +17,8 @@ if __name__ == "__main__":
     completed_task_titles = []
 
     with requests.get(url) as res:
-        json = res.json()
-        employee_name = json.get("name")
+        data = res.json()
+        employee_name = data.get("name")
 
     url = "https://jsonplaceholder.typicode.com/todos?userId={}"
     url = url.format(employeeID)
