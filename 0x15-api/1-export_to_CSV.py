@@ -18,7 +18,6 @@ if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/todos?userId={}"
     url = url.format(user_id)
     todos = requests.get(url).json()
-    done_tasks = []
 
     with open("{}.csv".format(user_id), mode="w") as file:
         writer = csv.writer(
