@@ -11,6 +11,10 @@ def top_ten(subreddit):
 
     res = requests.get(url, headers=headers)
 
+    if res.status_code == 404:
+        print(None)
+        return
+
     posts = res.json()["data"]["children"]
 
     for post in posts[: 10]:
