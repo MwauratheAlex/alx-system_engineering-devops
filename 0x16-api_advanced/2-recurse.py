@@ -12,7 +12,7 @@ def recurse(subreddit, hot_list=[], params={"after": None}):
     headers = {"User-Agent": "alx /0.0.3"}
 
     res = requests.get(
-            url, headers=headers, allow_redirects=False, params=params)
+            url, headers=headers, params=params, allow_redirects=False)
     if not res.ok:
         return None
     if res.status_code != 200:
