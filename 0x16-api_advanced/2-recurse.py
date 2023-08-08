@@ -26,6 +26,6 @@ def recurse(subreddit, hot_list=[], params={"after": None}):
     params["after"] = data["after"]
 
     if params["after"]:
-        recurse(subreddit, hot_list, params)
+        return recurse(subreddit, hot_list, params)
 
     return hot_list
