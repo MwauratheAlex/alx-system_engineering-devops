@@ -3,7 +3,9 @@
 import requests
 
 
-def recurse(subreddit, hot_list=[], params={"after": None}):
+def recurse(
+        subreddit, hot_list=[],
+        params={"after": None, "count": 0, "limit": 100}):
     """queries the Reddit API.
         returns: list of titles of all hot articles for subreddit.
         If no results are found for the given subreddit, return None."""
@@ -24,7 +26,7 @@ def recurse(subreddit, hot_list=[], params={"after": None}):
     hot_list += titles
 
     params["after"] = data["after"]
-
+    params["count"] += data["dist"]
     if params["after"]:
         return recurse(subreddit, hot_list, params)
 
