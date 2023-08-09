@@ -11,6 +11,7 @@ with ApiClient(configuration) as api_client:
 
     try:
         response = api_instance.list_hosts()
+
         print(response["host_list"])
     except Exception as e:
         message = '''DD_SITE="datadoghq.com" DD_API_KEY="<YOUR_API_KEY>"'''
